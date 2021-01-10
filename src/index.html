@@ -1,25 +1,32 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" />
-    <title>Hello Electron React!</title>
+    <meta charset="UTF-8"/>
+    <title>Shiny Kounter</title>
     <script>
-      (() => {
-        const link = document.createElement('link');
-        link.rel = 'stylesheet';
-        link.href = './dist/style.css';
-        // HACK: Writing the script path should be done with webpack
-        document.getElementsByTagName('head')[0].appendChild(link);
-      })();
+      ( () => 
+        {
+          const link = document.createElement('link');
+          link.rel = 'stylesheet';
+          link.href = './dist/style.css';
+          // HACK: Writing the script path should be done with webpack
+          document.getElementsByTagName('head')[0].appendChild(link);
+        }
+      ) ();
     </script>
+
   </head>
+
   <body>
-    <div id="root"></div>
+    <div id="root">
+    </div>
     <script>
-      if (typeof process === 'object') {
+      if (typeof process === 'object')
+      {
         const scripts = [];
 
-        if (process.env.NODE_ENV === 'development') {
+        if (process.env.NODE_ENV === 'development') 
+        {
           // Dynamically insert the DLL script in development env in the
           // renderer process
           scripts.push('../.erb/dll/renderer.dev.dll.js');
@@ -27,11 +34,13 @@
           // Dynamically insert the bundled app script in the renderer process
           const port = process.env.PORT || 1212;
           scripts.push(`http://localhost:${port}/dist/renderer.dev.js`);
-        } else {
+        } else 
+        {
           scripts.push('./dist/renderer.prod.js');
         }
 
-        if (scripts.length) {
+        if (scripts.length) 
+        {
           document.write(
             scripts
               .map((script) => `<script defer src="${script}"><\/script>`)
@@ -40,5 +49,7 @@
         }
       }
     </script>
+
   </body>
+  
 </html>

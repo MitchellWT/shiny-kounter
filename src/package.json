@@ -14,5 +14,7 @@
     "postinstall": "yarn electron-rebuild"
   },
   "license": "MIT",
-  "dependencies": {}
+  "dependencies": {
+    "bootstrap": "^4.5.3"
+  }
 }

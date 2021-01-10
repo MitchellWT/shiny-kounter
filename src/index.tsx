@@ -1,6 +1,6 @@
 import React from 'react';
-import { render } from 'react-dom';
-import App from './App';
+import ReactDOM from 'react-dom';
+import AppWrapper from './App';
 import './App.global.css';
 
-render(<App />, document.getElementById('root'));
+ReactDOM.render(<AppWrapper/>, document.getElementById('root'));
