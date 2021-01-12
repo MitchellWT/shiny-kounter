@@ -1,0 +1,53 @@
+/*
+ * @NOTE: Prepend a `~` to css file paths that are in your node_modules
+ *        See https://github.com/webpack-contrib/sass-loader#imports
+ */
+
+@import '~bootstrap/dist/css/bootstrap.css';
+
+$navbar-height: 70px;
+$navbar-vertical-padding: 10px;
+$icon-container-width: 200px;
+$footer-height: 70px;
+
+body
+{
+    background-color: #F8F9FA;
+    margin: 0;
+}
+
+#navbar
+{
+    width: 100%;
+    min-height: $navbar-height;
+    background-color: #ADB5BD;
+    margin: 0;
+    padding: $navbar-vertical-padding 0 0 0;
+}
+
+#kounter-container
+{
+    width: calc(100vw - $icon-container-width);
+    display: inline-block
+}
+
+#icon-container
+{
+    float: right;
+    width: $icon-container-width;
+    min-height: inherit;
+}
+
+.main
+{
+    min-height: calc(100vh - (#{$navbar-height} + #{$footer-height}));
+}
+
+#footer
+{
+    background-color: #ADB5BD;
+    color: #F8F9FA;
+    width: 100%;
+    height: $footer-height;
+    text-align: center;
+}

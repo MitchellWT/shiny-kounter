@@ -1,5 +1,6 @@
 import React from 'react';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import Navbar from './comp/Navbar';
 import Footer from './comp/Footer';
 
 class App extends React.Component
@@ -7,7 +8,8 @@ class App extends React.Component
   render()
   {
     return (
-      <div>
+      <div id="app">
+        <Navbar/>
         <div className="main">
         </div>
 
