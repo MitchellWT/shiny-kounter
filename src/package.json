@@ -16,6 +16,9 @@
   "license": "MIT",
   "dependencies": {
     "bootstrap": "^4.5.3",
+    "lowdb": "^1.0.0",
+    "pokedex-promise-v2": "^3.3.0",
+    "react-autosuggest": "^10.1.0",
     "react-bootstrap-icons": "^1.2.3"
   }
 }

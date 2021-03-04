@@ -7,7 +7,7 @@
 
 $navbar-height: 70px;
 $navbar-vertical-padding: 10px;
-$icon-container-width: 200px;
+$icon-container-width: 70px;
 $footer-height: 70px;
 
 body
@@ -27,20 +27,107 @@ body
 
 #kounter-container
 {
-    width: calc(100vw - $icon-container-width);
-    display: inline-block
+    width: calc(100vw - #{$icon-container-width});
+    display: inline-flex;
+    grid-column-gap: 10px;
 }
 
 #icon-container
 {
     float: right;
-    width: $icon-container-width;
-    min-height: inherit;
+    width: #{$icon-container-width};
+}
+
+.icon
+{
+    margin: 0 10px 0 0;
+}
+
+#add-modal-container
+{
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(255, 255, 255, 0.2);
+    position: absolute;
+    top:0;
+}
+
+#add-modal
+{
+    width: 75vw;
+    height: 75vh;
+    background-color: #ffffff;
+    border: 1px solid #000000;
+    margin: 15vh auto;
+}
+
+#list-modal-container
+{
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(255, 255, 255, 0.2);
+    position: absolute;
+    top: 0;
+}
+
+#list-modal
+{
+    width: 75vw;
+    height: 75vh;
+    background-color: black;
+    background-color: #ffffff;
+    border: 1px solid #000000;
+    margin: 15vh auto;
+}
+
+.modal-cross-container
+{
+    width: 100%;
+    height: 25px;
+}
+
+.modal-cross
+{
+    float: right;
+    clear: both;
 }
 
 .main
 {
     min-height: calc(100vh - (#{$navbar-height} + #{$footer-height}));
+}
+
+.main-trash
+{
+    float: right;
+    clear: both;
+}
+
+.main-name
+{
+    width: 100%;
+    text-align: center;
+}
+
+.main-kounter-container
+{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+}
+
+.main-timer-container
+{
+    width: 100%;
+    text-align: center;
+}
+
+.main-caught-container
+{
+    width: 100%;
+    text-align: center;
 }
 
 #footer
