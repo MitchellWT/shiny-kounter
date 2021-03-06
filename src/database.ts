@@ -126,10 +126,11 @@ exports.removePokemonKounter = (id: number) =>
     db.get('currentKounter').remove({"id": id}).write();
 };
 
-exports.updateDatabase = (id: number) =>
+exports.updateDatabase = (id: number, kount: number, time: number, caught: boolean) =>
 {
     const adapter = new FileSync('db.json');
     const db = low(adapter);
 
+    db.get('pokemon').find({id: id}).assign({kounter: kount, timer: time, caught: caught}).write();
     console.log(db.get('pokemon').find({id: id}).value());
 };

@@ -101,8 +101,17 @@ class PokemonSearch extends React.Component<PokemonSearchProp, PokemonSearchStat
             onChange: this.onChange
         };
 
+        /*
+        let caughtStatus = "Not Caught";
+        
+        if (this.state.selectedSuggestion.caught != null)
+        {
+            caughtStatus = this.state.selectedSuggestion.caught ? "Caught" : "Not Caught";
+        }
+        */
+
         return (
-            <div>
+            <div id="pokemon-search">
                 <Autosuggest
                     suggestions={suggestions}
                     onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
@@ -112,13 +121,21 @@ class PokemonSearch extends React.Component<PokemonSearchProp, PokemonSearchStat
                     inputProps={inputProps}
                     onSuggestionSelected={this.onSuggestionSelected}/>
                 {this.state.selectedSuggestion == null ? [] : 
-                <div>
-                    <h1>{this.state.selectedSuggestion.id} - {this.state.selectedSuggestion.name}</h1>
-                    <h2>{this.state.selectedSuggestion.caught}</h2>
-                    <h2>{this.state.selectedSuggestion.kounter}</h2>
-                    <h2>{this.state.selectedSuggestion.timer}</h2>
+                <div className="results-container">
+                    <p>{this.state.selectedSuggestion.id} | {this.state.selectedSuggestion.name}</p>
+                    <p>{this.state.selectedSuggestion.caught ? "Caught" : "Not Caught"}</p>
+                    <table> 
+                        <tr>
+                            <td>Kounter</td>
+                            <td>{this.state.selectedSuggestion.kounter}</td>
+                        </tr>
+                        <tr>
+                            <td>Timer</td>
+                            <td>{this.state.selectedSuggestion.timer}</td>  
+                        </tr>
+                    </table>
 
-                    <button onClick={() => this.state.createKounter(this.state.selectedSuggestion)}>Create Kounter!</button>
+                    <button className="results-button" onClick={() => this.state.createKounter(this.state.selectedSuggestion)}>Create Kounter!</button>
                 </div>
                 }
             </div>

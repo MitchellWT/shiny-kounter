@@ -8,7 +8,12 @@
 $navbar-height: 70px;
 $navbar-vertical-padding: 10px;
 $icon-container-width: 70px;
-$footer-height: 70px;
+$footer-height: 50px;
+
+html
+{
+    overflow: hidden;
+}
 
 body
 {
@@ -16,31 +21,54 @@ body
     margin: 0;
 }
 
+#pre-error-container
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+
 #navbar
 {
     width: 100%;
     min-height: $navbar-height;
-    background-color: #ADB5BD;
+    background-color: #212529;
     margin: 0;
-    padding: $navbar-vertical-padding 0 0 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
 }
 
 #kounter-container
 {
     width: calc(100vw - #{$icon-container-width});
-    display: inline-flex;
-    grid-column-gap: 10px;
+    display: flex;
+}
+
+#kounter-container > button
+{
+    background-color: #343a40;
+    color: #f8f9fa;
+    width: 25vw;
+    margin: 5px;
+    border: none;
+    border-radius: 8px;
 }
 
 #icon-container
 {
     float: right;
     width: #{$icon-container-width};
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .icon
 {
-    margin: 0 10px 0 0;
+    color: #f8f9fa;
 }
 
 #add-modal-container
@@ -56,7 +84,7 @@ body
 {
     width: 75vw;
     height: 75vh;
-    background-color: #ffffff;
+    background-color: #343a40;
     border: 1px solid #000000;
     margin: 15vh auto;
 }
@@ -83,30 +111,127 @@ body
 .modal-cross-container
 {
     width: 100%;
-    height: 25px;
+    height: 35px;
 }
 
 .modal-cross
 {
     float: right;
     clear: both;
+    color: #f8f9fa;
+}
+
+.modal-heading
+{
+    color: #f8f9fa;
+    text-align: center;
+    font-weight: 400;
+}
+
+#pokemon-search
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#pokemon-search > div:nth-child(1)
+{
+    width: 90%;
+    background-color: #6c757d;
+    color: #f8f9fa;
+}
+
+#pokemon-search > div > div > ul
+{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+#pokemon-search > div > div > ul > li
+{
+    padding: 2px;
+}
+
+#pokemon-search > div > input
+{
+    width: 100%;
+    background-color: #212529;
+    color: #f8f9fa;
+    border: 1px #000 solid;
+}
+
+#pokemon-search > div > input::placeholder
+{
+    color: #adb5bd;
+}
+
+.results-container
+{
+    width: 90%;
+    background-color: #343a40;
+    color: #f8f9fa;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.results-container > p
+{
+    font-size: 2.5rem;
+    font-weight: 400;
+    margin: 0;
+}
+
+.results-container > table
+{
+    width: 50%;
+}
+
+.results-container > table > tr > td
+{
+    font-size: 2.5rem;
+    font-weight: 400;
+    margin: 0;
+}
+
+.results-button
+{
+    font-size: 2.5rem;
+    background-color: #f8f9fa;
+    color: #212529;
+    margin: 5px;
+    border: none;
+    border-radius: 8px;
 }
 
 .main
 {
     min-height: calc(100vh - (#{$navbar-height} + #{$footer-height}));
+    background-color: #343a40;
+    color: #f8f9fa;
+}
+
+.trash-container
+{
+    height: 45px;
 }
 
 .main-trash
 {
     float: right;
     clear: both;
+    margin: 10px;
 }
 
 .main-name
 {
     width: 100%;
     text-align: center;
+    font-weight: 400;
 }
 
 .main-kounter-container
@@ -114,14 +239,63 @@ body
     display: flex;
     width: 100%;
     justify-content: center;
-    grid-column-gap: 10px;
-    grid-row-gap: 10px;
+    grid-column-gap: 25px;
+    grid-row-gap: 25px;
+}
+
+.minus-button
+{
+    font-size: 2.5rem;
+    background-color: #f8f9fa;
+    color: #212529;
+    border: none;
+    border-radius: 8px;
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.kounter-value
+{
+    font-weight: 400;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.plus-button
+{
+    font-size: 2.5rem;
+    background-color: #f8f9fa;
+    color: #212529;
+    border: none;
+    border-radius: 8px;
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .main-timer-container
 {
     width: 100%;
     text-align: center;
+    margin: 25px 0;
+}
+
+.timer-value
+{
+    font-weight: 400;
+}
+
+.kounter-general-button
+{
+    font-size: 2.5rem;
+    background-color: #f8f9fa;
+    color: #212529;
+    border: none;
+    border-radius: 8px;
 }
 
 .main-caught-container
@@ -132,9 +306,17 @@ body
 
 #footer
 {
-    background-color: #ADB5BD;
-    color: #F8F9FA;
+    background-color: #212529;
+    color: #f8f9fa;
     width: 100%;
     height: $footer-height;
     text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#footer-info
+{
+    margin: 0;
 }

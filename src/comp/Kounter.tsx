@@ -67,7 +67,7 @@ class Kounter extends React.Component<KounterProps, KounterState>
             }
         ));
 
-        this.updateDatabase();
+        this.updateDatabase(false);
     }
 
     increment()
@@ -78,7 +78,7 @@ class Kounter extends React.Component<KounterProps, KounterState>
             }
         ));
 
-        this.updateDatabase();
+        this.updateDatabase(false);
     }
 
     timeConvert()
@@ -129,6 +129,8 @@ class Kounter extends React.Component<KounterProps, KounterState>
                 timerOn: !prevstate.timerOn
             }
         ));
+
+        this.updateDatabase(false);
     }
 
     changeCaught()
@@ -138,33 +140,42 @@ class Kounter extends React.Component<KounterProps, KounterState>
                 caught: !prevstate.caught
             }
         ));
+
+        this.updateDatabase(true);
     }
 
-    updateDatabase()
+    updateDatabase(caughtChange: boolean)
     {
-        this.database.updateDatabase(this.state.id);
+        if (caughtChange)
+        {
+            this.database.updateDatabase(this.state.id, this.state.kount + 1, this.state.time, !this.state.caught);
+        }
+        else
+        {
+            this.database.updateDatabase(this.state.id, this.state.kount + 1, this.state.time, this.state.caught);
+        }
     }
 
     render()
     {
         return (
             <div className="main">
-                <div>
+                <div className="trash-container">
                     <Trash className="main-trash" size={25} onClick={() => this.state.hideKounter(this.state.id)}/>
                 </div>
                 <h1 className="main-name">{this.state.name}</h1>
                 <div className="main-kounter-container">
-                    <button onClick={this.decrement}>-</button>
-                    <h2>{this.state.kount}</h2>
-                    <button onClick={this.increment}>+</button>
+                    <button className="minus-button" onClick={this.decrement}>-</button>
+                    <h2 className="kounter-value">{this.state.kount}</h2>
+                    <button className="plus-button" onClick={this.increment}>+</button>
                 </div>
                 <div className="main-timer-container">
-                    <h2>{this.state.formattedTime}</h2>
-                    {!this.state.timerOn ? <button onClick={this.timerStart}>Start</button> : <button onClick={this.timerStop}>Stop</button>}
+                    <h2 className="timer-value">{this.state.formattedTime}</h2>
+                    {!this.state.timerOn ? <button className="kounter-general-button" onClick={this.timerStart}>Start</button> : <button className="kounter-general-button" onClick={this.timerStop}>Stop</button>}
                 </div>
 
                 <div className="main-caught-container">
-                    {!this.state.caught ? <button onClick={this.changeCaught}>Not Caught</button> : <button onClick={this.changeCaught}>Caught</button>}
+                    {!this.state.caught ? <button className="kounter-general-button" onClick={this.changeCaught}>Not Caught</button> : <button className="kounter-general-button" onClick={this.changeCaught}>Caught</button>}
                 </div>
             </div>
         );

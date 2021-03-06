@@ -130,9 +130,9 @@ class Navbar extends React.Component<NavbarProps, NavbarState>
             <div id="add-modal-container">
                 <div id="add-modal">
                     <div className="modal-cross-container">
-                        <X onClick={this.modalKounter} size={25} className="modal-cross"/>
+                        <X onClick={this.modalKounter} size={35} className="modal-cross"/>
                     </div>
-                    <h1>Add Kounter</h1>
+                    <h1 className="modal-heading">Add Kounter</h1>
                     <PokemonSearch createKounter={this.createKounter}/>
                 </div>
             </div>

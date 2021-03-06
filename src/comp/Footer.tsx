@@ -7,7 +7,7 @@ class Footer extends React.Component
     {
         return (
             <div id="footer">
-                <p>Created By /*Company Name*/</p>
+                <p id="footer-info">Designed and Developed by TETRA</p>
             </div>
         );
     }
