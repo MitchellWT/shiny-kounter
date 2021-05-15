@@ -15,6 +15,10 @@ interface PokemonSearchState
     createKounter: any
 }
 
+// Pokemon search used to find pokemon in the database.
+// Most of the code used here was in reference to 
+// https://github.com/moroshko/react-autosuggest#installation
+// in order to provide auto suggest capabilities.
 class PokemonSearch extends React.Component<PokemonSearchProp, PokemonSearchState>
 {
     private pokemonArr: any;

@@ -20,6 +20,8 @@ interface NavbarState
     showKounter: any
 }
 
+// Navigation bar that presents all the current counters
+// and a button to add additional counters.
 class Navbar extends React.Component<NavbarProps, NavbarState>
 {
     constructor(props: NavbarProps)
@@ -27,12 +29,12 @@ class Navbar extends React.Component<NavbarProps, NavbarState>
         super(props);
 
         let JSXKounters: any = [];
-        
-        this.props.kounters.forEach((kounter: any) => 
+
+        this.props.kounters.forEach((kounter: any) =>
             {
                 JSXKounters.push(<button onClick={() => this.props.showKounter(database.pokemonFromID(kounter))} id={kounter}>{kounter}</button>);
             }
-        ); 
+        );
 
         this.state = {
             kounters: props.kounters,
@@ -48,6 +50,7 @@ class Navbar extends React.Component<NavbarProps, NavbarState>
         this.removeKounter = this.removeKounter.bind(this);
     }
 
+    // Shows a model for adding a new counter.
     modalKounter()
     {
         this.setState(prevstate => (
@@ -57,6 +60,7 @@ class Navbar extends React.Component<NavbarProps, NavbarState>
         ));
     }
 
+    // Shows a model that presents a list of pokemon.
     modalList()
     {
         this.setState(prevstate => (
@@ -66,14 +70,19 @@ class Navbar extends React.Component<NavbarProps, NavbarState>
         ));
     }
 
+    // Creates a new counter using the underlying
+    // database.
     createKounter(selectedSuggestion: any)
     {
+        // Creates new JSX component.
         let newJSXKounter = (
             <button onClick={() => this.props.showKounter(database.pokemonFromID(selectedSuggestion.id))}>
                 {selectedSuggestion.id}
             </button>
         );
 
+        // Adds new component and data
+        // to the component and counter list.
         this.setState(prevstate => (
             {
                 showAdd: !prevstate.showAdd,
@@ -81,19 +90,19 @@ class Navbar extends React.Component<NavbarProps, NavbarState>
                 JSXKounters: [...prevstate.JSXKounters, newJSXKounter]
             }
         ));
-        
+
         database.addPokemonKounter(selectedSuggestion.id);
     }
 
+    // Removes a counter from the navigation bar and database.
     removeKounter(id: number)
     {
-        console.log(id);
-
         database.removePokemonKounter(id);
 
         let kounterArray = this.state.kounters;
         let JSXArray = this.state.JSXKounters;
 
+        // Searches and removes counter from counter array.
         for (let i = 0; i < kounterArray.length; i++)
         {
             let kounter = kounterArray[i];
@@ -105,13 +114,14 @@ class Navbar extends React.Component<NavbarProps, NavbarState>
             }
         }
 
+        // Searches and removes JSX from JSX array.
         for (let i = 0; i < JSXArray.length; i++)
         {
             let JSX = JSXArray[i];
 
             if (JSX.id == id)
             {
-                JSXArray. splice(i, 1);
+                JSXArray.splice(i, 1);
                 i = JSXArray.length;
             }
         }
@@ -147,7 +157,7 @@ class Navbar extends React.Component<NavbarProps, NavbarState>
                 </div>
             </div>
         );
-        
+
 
         return (
             <div id="navbar">

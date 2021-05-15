@@ -28,12 +28,14 @@ class App extends React.Component<any, any>
     this.hideKounter = this.hideKounter.bind(this);
   }
 
+  // Called when a counter is clicked,
+  // used to render the selected counter.
   showKounter(selectedSuggestion: any)
   {
     let newKounter = (
       <Kounter id={selectedSuggestion.id} name={selectedSuggestion.name} caught={selectedSuggestion.caught} kount={(selectedSuggestion.kounter)} time={selectedSuggestion.timer} hideKounter={this.hideKounter}/>
     );
-    
+
     this.setState((prevstate: any) => (
       {
         kounter: newKounter,
@@ -42,6 +44,8 @@ class App extends React.Component<any, any>
     ));
   }
 
+  // Called when a counter is clicked,
+  // used to change th visibility on a counter.
   hideKounter(id: number)
   {
     this.setState((prevstate: any) => (
@@ -65,7 +69,7 @@ class App extends React.Component<any, any>
   }
 }
 
-class AppWrapper extends React.Component 
+class AppWrapper extends React.Component
 {
   render()
   {

@@ -1,6 +1,8 @@
 import React from 'react';
 import '../App.global.scss';
 
+// Footer component that appears at the
+// bottom of the screen.
 class Footer extends React.Component
 {
     render()

@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import AppWrapper from './App';
 import './App.global.scss';
 
+// Pre loader component that currently only shows
+// a 'Loading...' text using a H1 tag.
 class PreLoader extends React.Component<any, any>
 {
     render()
@@ -15,6 +17,9 @@ class PreLoader extends React.Component<any, any>
     }
 }
 
+// Error component that is called when a connection
+// error occurs. This can happen when the application
+// is not able to interact with the PokemonAPI.
 class ConnectionError extends React.Component<any, any>
 {
     render()
@@ -29,8 +34,11 @@ class ConnectionError extends React.Component<any, any>
 
 ReactDOM.render(<PreLoader/>, document.getElementById('root'));
 
+// Gets database file and attempts the setup procedure.
+// Depending on the outcome the application will render
+// or the error component will be shown.
 const database = require('./database');
-database.setup().then((res: any) => 
+database.setup().then((res: any) =>
     {
         if (res)
         {

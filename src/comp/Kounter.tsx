@@ -24,6 +24,8 @@ interface KounterState
     timerOn: boolean
 }
 
+// Counter component that displays the data for a counter
+// and the ability to update the data.
 class Kounter extends React.Component<KounterProps, KounterState>
 {
     private timer: any = null;
@@ -59,6 +61,7 @@ class Kounter extends React.Component<KounterProps, KounterState>
         this.changeCaught = this.changeCaught.bind(this);
     }
 
+    // Decrement counter value by one.
     decrement()
     {
         this.setState(prevstate => (
@@ -70,6 +73,7 @@ class Kounter extends React.Component<KounterProps, KounterState>
         this.updateDatabase(false);
     }
 
+    // Increment counter value by one.
     increment()
     {
         this.setState(prevstate => (
@@ -81,6 +85,8 @@ class Kounter extends React.Component<KounterProps, KounterState>
         this.updateDatabase(false);
     }
 
+    // Converts time stored in state to human
+    // readable time.
     timeConvert()
     {
         let time = this.state.time;
@@ -97,6 +103,7 @@ class Kounter extends React.Component<KounterProps, KounterState>
         ));
     }
 
+    // Starts the counter timer.
     timerStart()
     {
         if (!this.state.timerOn)
@@ -120,6 +127,7 @@ class Kounter extends React.Component<KounterProps, KounterState>
         }
     }
 
+    // Stops the counter timer.
     timerStop()
     {
         clearInterval(this.timer);
@@ -133,6 +141,7 @@ class Kounter extends React.Component<KounterProps, KounterState>
         this.updateDatabase(false);
     }
 
+    // Changes the caught boolean on the counter.
     changeCaught()
     {
         this.setState(prevstate => (
@@ -144,6 +153,7 @@ class Kounter extends React.Component<KounterProps, KounterState>
         this.updateDatabase(true);
     }
 
+    // Updates the database of the newly changed data.
     updateDatabase(caughtChange: boolean)
     {
         if (caughtChange)
